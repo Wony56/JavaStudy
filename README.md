@@ -114,3 +114,21 @@
     }
   }
   ```
+  #### 싱글톤(Singleton)
+  - 단 하나의 객체만을 생성하는 것을 싱글톤이라고 한다. 싱글톤을 만들기 위해서는 클래스 외부에서 new연산자로 생성자를 호출할 수 없도록 막아야 한다.
+  => 생성자 앞에 private 접근 제한자를 붙여주면 된다.
+  => 외부에서 호출할 수 있는 정적 메소드인 getInstance()를 선언하고 정적 필드에서 참조하고 있는 자신의 객체를 리턴해 준다.
+  ```
+  public class 클래스{
+    //정적 필드
+    private static 클래스 singleton = new 클래스();
+
+    //생성자
+    private 클래스() {...}
+
+    //정적 메소드
+    static 클래스 getInstance(){
+      return singleton;
+    }
+  }
+  ```
