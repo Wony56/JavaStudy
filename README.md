@@ -155,3 +155,44 @@
 |protected|필드, 생성자, 메소드|자식 클래스가 아닌 다른 패키지에 소속된 클래스|
 |default|클래스, 필드, 생성자, 메소드|다른 패키지에 소속된 클래스|
 |private|필드, 생성자, 메소드|모든 외부 클래스|
+
+## 상속
+### 강제 타입 변환(Casting)
+- 부모 타입을 자식 타입으로 변환하는 것을 말한다.
+- 자식 타입이 부모 타입으로 자동 변환한 후, 다시 자식 타입으로 변환할 때에만 강제 타입 변환을 사용할 수 있다.
+```
+자식클래스 변수 = (자식클래스) 부모클래스타입;
+```
+```java
+class Parent{
+  String field1;
+  void method1() { ... }
+  void method2() { ... }
+}
+
+class Child extends Parent{
+  String field2;
+  void method3() { ... }
+}
+
+class ChildExample{
+  public static void main(String[] args){
+    Parent parent = new Child();
+    parent.field2 = "yyy"; (불가능)
+    parent.method3(); (불가능)
+    
+    Child child = (Child) parent;
+    child.field2 = "yyy"; (가능)
+    child.method3(); (가능)
+   }
+ }
+```
+
+### 추상 클래스
+- 추상(abstract)은 실체 간에 공통되는 특성을 추출한 것을 말한다.
+- 객체를 직접 생성할 수 있는 클래스를 <b>실체 클래스</b>라고 한다.
+  이 클래스들의 공통적인 특성을 추출해서 선언한 클래스를 <b>추상 클래스</b>라고 한다.
+  (추상 클래스는 new연산자를 사용해서 인스턴스를 생성시키지 못한다.)
+  #### 추상 클래스의 용도
+  1. 실체 클래스들의 공통된 필드와 메소드의 이름을 통일할 목적
+  2. 실체 클래스를 작성할 때 시간을 절약
